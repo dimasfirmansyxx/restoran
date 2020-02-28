@@ -5,6 +5,10 @@
 	$myfunc->set_title("Beranda");
 
 	include 'config/templates/header.php';
+
+	if ( isset($_GET['logout']) ) {
+		$myfunc->logout();
+	}
 ?>
 
 <div class="row mb-2">

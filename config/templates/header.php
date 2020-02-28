@@ -24,8 +24,8 @@
 						<a href="<?= $myfunc->baseurl ?>laporan.php" class="nav-item nav-link">Laporan</a>
 					</div>
 					<div class="navbar-nav ml-auto">
-						<a href="<?= $myfunc->baseurl ?>login.php" class="nav-item nav-link">Login</a>
-						<a href="<?= $myfunc->baseurl ?>logout.php" class="nav-item nav-link">Logout</a>
+						<a href="<?= $myfunc->baseurl ?>profil.php" class="nav-item nav-link">Profil</a>
+						<a href="<?= $myfunc->baseurl ?>index.php?logout=" class="nav-item nav-link">Logout</a>
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col-md-6">
-										<h6>Hi, Dimas Firmansyah</h6>
+										<h6>Hi, <?= $_SESSION["user_logged"]['nama'] ?></h6>
 									</div>
 									<div class="col-md-6 text-right">
 										<?= date("l, d F Y") ?>

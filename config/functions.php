@@ -105,6 +105,12 @@ class functions {
 		$this->redirect($this->baseurl . "login.php");
 	}
 
+	public function logout()
+	{
+		session_destroy();	
+		$this->redirect($this->baseurl . "login.php");
+	}
+
 	public function get_all_menu()
 	{
 		$query = "SELECT * FROM tblmenu";
