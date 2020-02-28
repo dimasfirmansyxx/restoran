@@ -1,0 +1,28 @@
+<?php 
+	include 'config/functions.php';
+	$myfunc = new functions();
+	$myfunc->set_breadcrumb("Beranda");
+	$myfunc->set_title("Beranda");
+
+	include 'config/templates/header.php';
+?>
+
+<div class="card">
+	<div class="card-header bg-dark text-white">
+		<div class="row">
+			<div class="col-md-6">
+				{HEADER TITLE}
+			</div>
+			<div class="col-md-6 text-right">
+				<a href="#" class="btn btn-primary btn-sm">{ADD BUTTON}</a>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+		{HEADER CONTENT}
+	</div>
+</div>
+
+<?php 
+	include 'config/templates/footer.php';
+?>
