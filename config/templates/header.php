@@ -30,25 +30,27 @@
 				</div>
 			</div>
 		</nav>
+	<?php endif ?>
 
 		<div class="container mt-5">
-			<div class="row mb-4">
-				<div class="col-12 mb-2 breadcrumbs">
-					<small><?= $myfunc->breadcrumb ?></small>
-				</div>
-				<div class="col-12">
-					<div class="card">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-6">
-									<h6>Hi, Dimas Firmansyah</h6>
-								</div>
-								<div class="col-md-6 text-right">
-									<?= date("l, d F Y") ?>
+			<?php if ( isset($_SESSION["user_logged"]) ): ?>
+				<div class="row mb-4">
+					<div class="col-12 mb-2 breadcrumbs">
+						<small><?= $myfunc->breadcrumb ?></small>
+					</div>
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-6">
+										<h6>Hi, Dimas Firmansyah</h6>
+									</div>
+									<div class="col-md-6 text-right">
+										<?= date("l, d F Y") ?>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-	<?php endif ?>
+			<?php endif ?>

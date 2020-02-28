@@ -84,6 +84,27 @@ class functions {
 		$this->title = $title;
 	}
 
+	public function login_check($data)
+	{
+		$username = $data['username'];
+		$password = $data['password'];
+
+		$query = "SELECT * FROM tbluser WHERE username = '$username'";
+		if ( $this->num_rows($query) > 0 ) {
+			$get = $this->get_data($query);
+			if ( password_verify($password, $get['password']) ) {
+				$_SESSION["user_logged"] = $get;
+				$this->redirect($this->baseurl . "index.php");
+			} else {
+				$this->notif("Password salah");
+			}
+		} else {
+			$this->notif("Username tidak ada");
+		}
+
+		$this->redirect($this->baseurl . "login.php");
+	}
+
 	public function get_all_menu()
 	{
 		$query = "SELECT * FROM tblmenu";
