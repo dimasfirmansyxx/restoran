@@ -6,6 +6,11 @@
 
 	include 'config/templates/header.php';
 
+	$privilege = $_SESSION["user_logged"]['privilege'];
+	if ( !($privilege == "administrator" || $privilege == "owner") ) {
+		$myfunc->redirect($myfunc->baseurl . "index.php");
+	}
+
 	if ( isset($_POST['submit']) ) {
 		$myfunc->tambah_menu($_POST);
 	}

@@ -6,6 +6,12 @@
 
 	include 'config/templates/header.php';
 
+	$privilege = $_SESSION["user_logged"]['privilege'];
+	if ( !($privilege == "administrator" || $privilege == "owner") ) {
+		$myfunc->redirect($myfunc->baseurl . "index.php");
+	}
+
+
 	$get_data = $myfunc->get_all_menu();
 
 	if ( isset($_GET['hapus']) ) {
