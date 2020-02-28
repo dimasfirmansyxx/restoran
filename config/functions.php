@@ -17,6 +17,17 @@ class functions {
 	{
 		$this->conn = mysqli_connect('localhost','root','','restoran');
 		$this->baseurl = "http://localhost/restoran/";
+		$uri = explode("/", $_SERVER["REQUEST_URI"]);
+
+		if ( !isset($_SESSION["user_logged"]) ) {
+			if ( !($uri[2] == "login.php") ) {
+				$this->redirect($this->baseurl . "login.php");
+			}
+		} else {
+			if ( $uri[2] == "login.php" ) {
+				$this->redirect($this->baseurl . "index.php");
+			}
+		}
 	}
 
 	public function num_rows($query)
