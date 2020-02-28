@@ -1,8 +1,8 @@
 <?php 
 	include 'config/functions.php';
 	$myfunc = new functions();
-	$myfunc->set_breadcrumb("Beranda / Menu / Tambah");
-	$myfunc->set_title("Tambah Menu");
+	$myfunc->set_breadcrumb("Beranda / Menu / Edit");
+	$myfunc->set_title("Edit Menu");
 
 	include 'config/templates/header.php';
 
