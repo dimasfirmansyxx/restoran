@@ -32,7 +32,7 @@
 						List Meja
 					</div>
 					<div class="col-md-6 text-right">
-						<a href="#" class="btn btn-primary btn-sm">Tambah Meja</a>
+						<a href="meja_tambah.php" class="btn btn-primary btn-sm">Tambah Meja</a>
 					</div>
 				</div>
 			</div>
@@ -41,15 +41,15 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th>#</th>
+								<th width="50">#</th>
 								<th>Meja</th>
-								<th>Aksi</th>
+								<th width="200">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php if ( $get_data == 3 ): ?>
 								<tr>
-									<td colspan="3" class="text-center">Tidak ada menu</td>
+									<td colspan="3" class="text-center">Tidak ada meja</td>
 								</tr>
 							<?php else: ?>
 								<?php $i = 1; 

@@ -157,4 +157,27 @@ class functions {
 		}
 	}
 	
+	public function get_all_meja()
+	{
+		$query = "SELECT * FROM tblmeja";
+		if ( $this->num_rows($query) > 0 ) {
+			return $this->query($query);
+		} else {
+			return 3;
+		}
+	}
+
+	public function tambah_meja($data)
+	{
+		$meja = $data['meja'];
+
+		$insert = $this->exe("INSERT INTO tblmeja VALUES ('','$meja')");
+		if ( $insert == 0 ) {
+			$this->notif("Sukses");
+			$this->redirect($this->baseurl . "meja.php");
+		} else {
+			$this->notif("Gagal");
+			$this->redirect($this->baseurl . "meja_tambah.php");
+		}
+	}
 }
