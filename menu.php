@@ -28,7 +28,7 @@
 						<th width="50">#</th>
 						<th>Nama</th>
 						<th>Harga</th>
-						<th>Aksi</th>
+						<th width="200">Aksi</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -37,12 +37,16 @@
 							<td colspan="4" class="text-center">Tidak ada menu</td>
 						</tr>
 					<?php else: ?>
-						<?php $i = 0; 
+						<?php $i = 1; 
 						foreach ($get_data as $row): ?>
 							<tr>
 								<td><?= $i++ ?></td>
 								<td><?= $row['nama_menu'] ?></td>
 								<td>Rp.<?= number_format($row['harga']) ?></td>
+								<td>
+									<a href="#" class="btn btn-primary btn-sm">Edit</a>
+									<a href="#" class="btn btn-danger btn-sm">Hapus</a>
+								</td>
 							</tr>
 						<?php endforeach ?>
 					<?php endif ?>

@@ -36,6 +36,27 @@ class functions {
 		return $rows;
 	}
 
+	public function insert($query)
+	{
+		$query = mysqli_query($this->conn,$query);
+
+		if ( mysqli_affected_rows($this->conn) > 0 ) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
+
+	public function redirect($link)
+	{
+		header("Location: $link");
+	}
+
+	public function notif($msg)
+	{
+		echo "<script>alert('$msg')</script>";
+	}
+
 	public function set_breadcrumb($list)
 	{
 		$this->breadcrumb = $list;
@@ -53,6 +74,21 @@ class functions {
 			return $this->query($query);
 		} else {
 			return 3;
+		}
+	}
+
+	public function tambah_menu($data)
+	{
+		$nama_menu = ucwords($data['nama']);
+		$harga = $data['harga'];
+
+		$insert = $this->insert("INSERT INTO tblmenu VALUES ('','$nama_menu','$harga')");
+		if ( $insert == 0 ) {
+			$this->notif("Sukses");
+			$this->redirect($this->baseurl . "menu.php");
+		} else {
+			$this->notif("Gagal");
+			$this->redirect($this->baseurl . "menu_tambah.php");
 		}
 	}
 	
