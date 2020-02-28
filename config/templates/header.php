@@ -16,15 +16,15 @@
 			</button>
 			<div class="collapse navbar-collapse" id="mynav">
 				<div class="navbar-nav">
-					<a href="#" class="nav-item nav-link">Beranda</a>
-					<a href="#" class="nav-item nav-link">Entri Menu</a>
-					<a href="#" class="nav-item nav-link">Entri Order</a>
-					<a href="#" class="nav-item nav-link">Entri Transaksi</a>
-					<a href="#" class="nav-item nav-link">Laporan</a>
+					<a href="<?= $myfunc->baseurl ?>index.php" class="nav-item nav-link">Beranda</a>
+					<a href="<?= $myfunc->baseurl ?>menu.php" class="nav-item nav-link">Entri Menu</a>
+					<a href="<?= $myfunc->baseurl ?>order.php" class="nav-item nav-link">Entri Order</a>
+					<a href="<?= $myfunc->baseurl ?>transaksi.php" class="nav-item nav-link">Entri Transaksi</a>
+					<a href="<?= $myfunc->baseurl ?>laporan.php" class="nav-item nav-link">Laporan</a>
 				</div>
 				<div class="navbar-nav ml-auto">
-					<a href="#" class="nav-item nav-link">Login</a>
-					<a href="#" class="nav-item nav-link">Logout</a>
+					<a href="<?= $myfunc->baseurl ?>login.php" class="nav-item nav-link">Login</a>
+					<a href="<?= $myfunc->baseurl ?>logout.php" class="nav-item nav-link">Logout</a>
 				</div>
 			</div>
 		</div>
