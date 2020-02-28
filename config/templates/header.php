@@ -9,44 +9,46 @@
 	<script src="assets/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container">
-			<button class="navbar-toggler" data-toggle="collapse" data-target="#mynav">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="mynav">
-				<div class="navbar-nav">
-					<a href="<?= $myfunc->baseurl ?>index.php" class="nav-item nav-link">Beranda</a>
-					<a href="<?= $myfunc->baseurl ?>menu.php" class="nav-item nav-link">Entri Menu</a>
-					<a href="<?= $myfunc->baseurl ?>order.php" class="nav-item nav-link">Entri Order</a>
-					<a href="<?= $myfunc->baseurl ?>transaksi.php" class="nav-item nav-link">Entri Transaksi</a>
-					<a href="<?= $myfunc->baseurl ?>laporan.php" class="nav-item nav-link">Laporan</a>
-				</div>
-				<div class="navbar-nav ml-auto">
-					<a href="<?= $myfunc->baseurl ?>login.php" class="nav-item nav-link">Login</a>
-					<a href="<?= $myfunc->baseurl ?>logout.php" class="nav-item nav-link">Logout</a>
+	<?php if ( isset($_SESSION["user_logged"]) ): ?>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<button class="navbar-toggler" data-toggle="collapse" data-target="#mynav">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="mynav">
+					<div class="navbar-nav">
+						<a href="<?= $myfunc->baseurl ?>index.php" class="nav-item nav-link">Beranda</a>
+						<a href="<?= $myfunc->baseurl ?>menu.php" class="nav-item nav-link">Entri Menu</a>
+						<a href="<?= $myfunc->baseurl ?>order.php" class="nav-item nav-link">Entri Order</a>
+						<a href="<?= $myfunc->baseurl ?>transaksi.php" class="nav-item nav-link">Entri Transaksi</a>
+						<a href="<?= $myfunc->baseurl ?>laporan.php" class="nav-item nav-link">Laporan</a>
+					</div>
+					<div class="navbar-nav ml-auto">
+						<a href="<?= $myfunc->baseurl ?>login.php" class="nav-item nav-link">Login</a>
+						<a href="<?= $myfunc->baseurl ?>logout.php" class="nav-item nav-link">Logout</a>
+					</div>
 				</div>
 			</div>
-		</div>
-	</nav>
+		</nav>
 
-	<div class="container mt-5">
-		<div class="row mb-4">
-			<div class="col-12 mb-2 breadcrumbs">
-				<small><?= $myfunc->breadcrumb ?></small>
-			</div>
-			<div class="col-12">
-				<div class="card">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-md-6">
-								<h6>Hi, Dimas Firmansyah</h6>
-							</div>
-							<div class="col-md-6 text-right">
-								<?= date("l, d F Y") ?>
+		<div class="container mt-5">
+			<div class="row mb-4">
+				<div class="col-12 mb-2 breadcrumbs">
+					<small><?= $myfunc->breadcrumb ?></small>
+				</div>
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-6">
+									<h6>Hi, Dimas Firmansyah</h6>
+								</div>
+								<div class="col-md-6 text-right">
+									<?= date("l, d F Y") ?>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+	<?php endif ?>
