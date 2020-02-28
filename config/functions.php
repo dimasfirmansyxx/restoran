@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 /*
 	0 = sukses
 	1 = kesalahan server
@@ -45,6 +45,12 @@ class functions {
 		} else {
 			return 1;
 		}
+	}
+
+	public function get_data($query)
+	{
+		$query = mysqli_query($this->conn,$query);
+		return mysqli_fetch_assoc($query);
 	}
 
 	public function redirect($link)
@@ -95,10 +101,21 @@ class functions {
 	public function hapus_menu($id)
 	{
 		$delete = $this->exe("DELETE FROM tblmenu WHERE id_menu = '$id'");
-		if ( mysql_affected_rows($this->conn) > 0 ) {
-			return 0;
+		return $delete;
+	}
+
+	public function edit_menu($data)
+	{
+		$id_menu = $data['id_menu'];
+		$nama_menu = ucwords($data['nama_menu']);
+		$harga = $data['harga'];
+
+		$update = $this->exe("UPDATE tblmenu SET nama_menu = '$nama_menu', harga = '$harga' WHERE id_menu = '$id_menu'");
+		if ( $update == 0 ) {
+			$this->redirect($this->baseurl . "menu.php");
 		} else {
-			return 1;
+			$this->notif("Gagal update");
+			$this->redirect($this->baseurl . "menu_edit.php?id=$id_menu");
 		}
 	}
 	
