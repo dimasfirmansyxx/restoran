@@ -18,10 +18,27 @@
 				<div class="collapse navbar-collapse" id="mynav">
 					<div class="navbar-nav">
 						<a href="<?= $myfunc->baseurl ?>index.php" class="nav-item nav-link">Beranda</a>
-						<a href="<?= $myfunc->baseurl ?>menu.php" class="nav-item nav-link">Entri Menu</a>
-						<a href="<?= $myfunc->baseurl ?>order.php" class="nav-item nav-link">Entri Order</a>
-						<a href="<?= $myfunc->baseurl ?>transaksi.php" class="nav-item nav-link">Entri Transaksi</a>
-						<a href="<?= $myfunc->baseurl ?>laporan.php" class="nav-item nav-link">Laporan</a>
+						<?php if ( $_SESSION["user_logged"]['privilege'] == "administrator" ): ?>
+							<a href="<?= $myfunc->baseurl ?>menu.php" class="nav-item nav-link">Entri Menu</a>
+							<a href="<?= $myfunc->baseurl ?>meja.php" class="nav-item nav-link">Entri Meja</a>
+							<a href="<?= $myfunc->baseurl ?>order.php" class="nav-item nav-link">Entri Order</a>
+							<a href="<?= $myfunc->baseurl ?>transaksi.php" class="nav-item nav-link">Entri Transaksi</a>
+							<a href="<?= $myfunc->baseurl ?>cust.php" class="nav-item nav-link">Entri Pelanggan</a>
+							<a href="<?= $myfunc->baseurl ?>user.php" class="nav-item nav-link">Entri Pengguna</a>
+							<a href="<?= $myfunc->baseurl ?>laporan.php" class="nav-item nav-link">Laporan</a>
+						<?php elseif ( $_SESSION["user_logged"]['privilege'] == "waiter" ): ?>
+							<a href="<?= $myfunc->baseurl ?>order.php" class="nav-item nav-link">Entri Order</a>
+							<a href="<?= $myfunc->baseurl ?>cust.php" class="nav-item nav-link">Entri Pelanggan</a>
+						<?php elseif ( $_SESSION["user_logged"]['privilege'] == "kasir" ): ?>
+							<a href="<?= $myfunc->baseurl ?>transaksi.php" class="nav-item nav-link">Entri Transaksi</a>
+							<a href="<?= $myfunc->baseurl ?>cust.php" class="nav-item nav-link">Entri Pelanggan</a>
+						<?php elseif ( $_SESSION["user_logged"]['privilege'] == "owner" ): ?>
+							<a href="<?= $myfunc->baseurl ?>menu.php" class="nav-item nav-link">Entri Menu</a>
+							<a href="<?= $myfunc->baseurl ?>meja.php" class="nav-item nav-link">Entri Meja</a>
+							<a href="<?= $myfunc->baseurl ?>cust.php" class="nav-item nav-link">Entri Pelanggan</a>
+							<a href="<?= $myfunc->baseurl ?>user.php" class="nav-item nav-link">Entri Pengguna</a>
+							<a href="<?= $myfunc->baseurl ?>laporan.php" class="nav-item nav-link">Laporan</a>
+						<?php endif ?>
 					</div>
 					<div class="navbar-nav ml-auto">
 						<a href="<?= $myfunc->baseurl ?>profil.php" class="nav-item nav-link">Profil</a>
