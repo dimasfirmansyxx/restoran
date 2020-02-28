@@ -36,7 +36,7 @@ class functions {
 		return $rows;
 	}
 
-	public function insert($query)
+	public function exe($query)
 	{
 		$query = mysqli_query($this->conn,$query);
 
@@ -82,13 +82,23 @@ class functions {
 		$nama_menu = ucwords($data['nama']);
 		$harga = $data['harga'];
 
-		$insert = $this->insert("INSERT INTO tblmenu VALUES ('','$nama_menu','$harga')");
+		$insert = $this->exe("INSERT INTO tblmenu VALUES ('','$nama_menu','$harga')");
 		if ( $insert == 0 ) {
 			$this->notif("Sukses");
 			$this->redirect($this->baseurl . "menu.php");
 		} else {
 			$this->notif("Gagal");
 			$this->redirect($this->baseurl . "menu_tambah.php");
+		}
+	}
+
+	public function hapus_menu($id)
+	{
+		$delete = $this->exe("DELETE FROM tblmenu WHERE id_menu = '$id'");
+		if ( mysql_affected_rows($this->conn) > 0 ) {
+			return 0;
+		} else {
+			return 1;
 		}
 	}
 	

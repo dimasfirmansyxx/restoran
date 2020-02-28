@@ -7,6 +7,14 @@
 	include 'config/templates/header.php';
 
 	$get_data = $myfunc->get_all_menu();
+
+	if ( isset($_GET['hapus']) ) {
+		$delete = $myfunc->hapus_menu($_GET['hapus']);
+		if ( $delete == 1 ) {
+			$myfunc->notif("Gagal dihapus");
+		}
+		$myfunc->redirect($myfunc->baseurl . "menu.php");
+	}
 ?>
 
 <div class="card">
@@ -45,7 +53,7 @@
 								<td>Rp.<?= number_format($row['harga']) ?></td>
 								<td>
 									<a href="#" class="btn btn-primary btn-sm">Edit</a>
-									<a href="#" class="btn btn-danger btn-sm">Hapus</a>
+									<a href="<?= $myfunc->baseurl ?>menu.php?hapus=<?= $row['id_menu'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin dihapus ?')">Hapus</a>
 								</td>
 							</tr>
 						<?php endforeach ?>
