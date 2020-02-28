@@ -180,4 +180,10 @@ class functions {
 			$this->redirect($this->baseurl . "meja_tambah.php");
 		}
 	}
+
+	public function hapus_meja($id)
+	{
+		$delete = $this->exe("DELETE FROM tblmeja WHERE id_meja = '$id'");
+		return $delete;
+	}
 }

@@ -15,11 +15,11 @@
 	$get_data = $myfunc->get_all_meja();
 
 	if ( isset($_GET['hapus']) ) {
-		$delete = $myfunc->hapus_menu($_GET['hapus']);
+		$delete = $myfunc->hapus_meja($_GET['hapus']);
 		if ( $delete == 1 ) {
 			$myfunc->notif("Gagal dihapus");
 		}
-		$myfunc->redirect($myfunc->baseurl . "menu.php");
+		$myfunc->redirect($myfunc->baseurl . "meja.php");
 	}
 ?>
 
@@ -58,8 +58,8 @@
 										<td><?= $i++ ?></td>
 										<td><?= $row['meja'] ?></td>
 										<td>
-											<a href="<?= $myfunc->baseurl ?>menu_edit.php?id=<?= $row['id_menu'] ?>" class="btn btn-primary btn-sm">Edit</a>
-											<a href="<?= $myfunc->baseurl ?>menu.php?hapus=<?= $row['id_menu'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin dihapus ?')">Hapus</a>
+											<a href="<?= $myfunc->baseurl ?>meja_edit.php?id=<?= $row['id_meja'] ?>" class="btn btn-primary btn-sm">Edit</a>
+											<a href="<?= $myfunc->baseurl ?>meja.php?hapus=<?= $row['id_meja'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin dihapus ?')">Hapus</a>
 										</td>
 									</tr>
 								<?php endforeach ?>
