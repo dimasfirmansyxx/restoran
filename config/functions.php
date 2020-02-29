@@ -286,11 +286,11 @@ class functions {
 
 	}
 
-	// public function hapus_pelanggan($id)
-	// {
-	// 	$delete = $this->exe("DELETE FROM tblpelanggan WHERE id_pelanggan = '$id'");
-	// 	return $delete;
-	// }
+	public function hapus_user($id)
+	{
+		$delete = $this->exe("DELETE FROM tbluser WHERE id_user = '$id'");
+		return $delete;
+	}
 
 	// public function edit_pelanggan($data)
 	// {
