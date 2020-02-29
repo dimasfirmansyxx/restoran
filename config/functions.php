@@ -21,11 +21,11 @@ class functions {
 
 		if ( !isset($_SESSION["user_logged"]) ) {
 			if ( !($uri[2] == "login.php") ) {
-				$this->redirect($this->baseurl . "login.php");
+				header("Location: " . $this->baseurl . "login.php");
 			}
 		} else {
 			if ( $uri[2] == "login.php" ) {
-				$this->redirect($this->baseurl . "index.php");
+				header("Location: " . $this->baseurl . "index.php");
 			}
 		}
 	}
@@ -94,7 +94,7 @@ class functions {
 			$get = $this->get_data($query);
 			if ( password_verify($password, $get['password']) ) {
 				$_SESSION["user_logged"] = $get;
-				$this->redirect($this->baseurl . "index.php");
+				header("Location: " . $this->baseurl . "index.php");
 			} else {
 				$this->notif("Password salah");
 			}
@@ -102,13 +102,13 @@ class functions {
 			$this->notif("Username tidak ada");
 		}
 
-		$this->redirect($this->baseurl . "login.php");
+		header("Location: " . $this->baseurl . "login.php");
 	}
 
 	public function logout()
 	{
 		session_destroy();	
-		$this->redirect($this->baseurl . "login.php");
+		header("Location: " . $this->baseurl . "login.php");
 	}
 
 	public function get_all_menu()
