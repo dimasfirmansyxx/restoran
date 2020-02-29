@@ -186,4 +186,18 @@ class functions {
 		$delete = $this->exe("DELETE FROM tblmeja WHERE id_meja = '$id'");
 		return $delete;
 	}
+
+	public function edit_meja($data)
+	{
+		$id_meja = $data['id_meja'];
+		$meja = $data['meja'];
+
+		$update = $this->exe("UPDATE tblmeja SET meja = '$meja' WHERE id_meja = '$id_meja'");
+		if ( $update == 0 ) {
+			$this->redirect($this->baseurl . "meja.php");
+		} else {
+			$this->notif("Gagal update");
+			$this->redirect($this->baseurl . "meja_edit.php?id=$id_meja");
+		}
+	}
 }
