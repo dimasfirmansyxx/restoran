@@ -44,13 +44,14 @@
 								<th width="50">#</th>
 								<th>Nama</th>
 								<th>Username</th>
+								<th>Hak Akses</th>
 								<th width="200">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php if ( $get_data == 3 ): ?>
 								<tr>
-									<td colspan="4" class="text-center">Tidak ada user</td>
+									<td colspan="5" class="text-center">Tidak ada user</td>
 								</tr>
 							<?php else: ?>
 								<?php $i = 1; 
@@ -59,6 +60,7 @@
 										<td><?= $i++ ?></td>
 										<td><?= $row['nama'] ?></td>
 										<td><?= $row['username'] ?></td>
+										<td><?= ucwords($row['privilege']) ?></td>
 										<td>
 											<a href="<?= $myfunc->baseurl ?>user_edit.php?id=<?= $row['id_user'] ?>" class="btn btn-primary btn-sm">Edit</a>
 											<a href="<?= $myfunc->baseurl ?>user.php?hapus=<?= $row['id_user'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin dihapus ?')">Hapus</a>

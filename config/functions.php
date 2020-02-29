@@ -66,7 +66,7 @@ class functions {
 
 	public function redirect($link)
 	{
-		header("Location: $link");
+		echo "<script>window.location = " . $link . "; </script>";
 	}
 
 	public function notif($msg)
@@ -261,22 +261,28 @@ class functions {
 		}
 	}
 
-	// public function tambah_pelanggan($data)
-	// {
-	// 	$nama = ucwords($data['nama']);
-	// 	$jk = $data['jk'];
-	// 	$nohp = $data['nohp'];
-	// 	$alamat = $data['alamat'];
+	public function tambah_user($data)
+	{
+		$nama = ucwords($data['nama']);
+		$username = $data['username'];
+		$password = password_hash($data['password'], PASSWORD_DEFAULT);
+		$privilege = $data['privilege'];
 
-	// 	$insert = $this->exe("INSERT INTO tblpelanggan VALUES ('','$nama','$jk','$nohp','$alamat')");
-	// 	if ( $insert == 0 ) {
-	// 		$this->notif("Sukses");
-	// 		$this->redirect($this->baseurl . "cust.php");
-	// 	} else {
-	// 		$this->notif("Gagal");
-	// 		$this->redirect($this->baseurl . "cust_tambah.php");
-	// 	}
-	// }
+		if ( $this->num_rows("SELECT * FROM tbluser WHERE username = '$username'") > 0 ) {
+			$this->notif("Username sudah ada");
+			$this->redirect($this->baseurl . "user_tambah.php");
+		} else {
+			$insert = $this->exe("INSERT INTO tbluser VALUES ('','$nama','$username','$password','$privilege')");
+			if ( $insert == 0 ) {
+				$this->notif("Sukses");
+				$this->redirect($this->baseurl . "user.php");
+			} else {
+				$this->notif("Gagal");
+				$this->redirect($this->baseurl . "user_tambah.php");
+			}
+		}
+
+	}
 
 	// public function hapus_pelanggan($id)
 	// {
