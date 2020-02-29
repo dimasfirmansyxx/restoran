@@ -227,4 +227,10 @@ class functions {
 			$this->redirect($this->baseurl . "cust_tambah.php");
 		}
 	}
+
+	public function hapus_pelanggan($id)
+	{
+		$delete = $this->exe("DELETE FROM tblpelanggan WHERE id_pelanggan = '$id'");
+		return $delete;
+	}
 }

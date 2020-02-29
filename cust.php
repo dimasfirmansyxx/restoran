@@ -9,11 +9,11 @@
 	$get_data = $myfunc->get_all_pelanggan();
 
 	if ( isset($_GET['hapus']) ) {
-		$delete = $myfunc->hapus_meja($_GET['hapus']);
+		$delete = $myfunc->hapus_pelanggan($_GET['hapus']);
 		if ( $delete == 1 ) {
 			$myfunc->notif("Gagal dihapus");
 		}
-		$myfunc->redirect($myfunc->baseurl . "meja.php");
+		$myfunc->redirect($myfunc->baseurl . "cust.php");
 	}
 ?>
 
