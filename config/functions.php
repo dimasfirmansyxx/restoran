@@ -233,4 +233,21 @@ class functions {
 		$delete = $this->exe("DELETE FROM tblpelanggan WHERE id_pelanggan = '$id'");
 		return $delete;
 	}
+
+	public function edit_pelanggan($data)
+	{
+		$id_pelanggan = $data['id_pelanggan'];
+		$nama = $data['nama'];
+		$jk = $data['jk'];
+		$nohp = $data['nohp'];
+		$alamat = $data['alamat'];
+
+		$update = $this->exe("UPDATE tblpelanggan SET nama = '$nama', jk = '$jk', nohp = '$nohp', alamat = '$alamat' WHERE id_pelanggan = '$id_pelanggan'");
+		if ( $update == 0 ) {
+			$this->redirect($this->baseurl . "cust.php");
+		} else {
+			$this->notif("Gagal update");
+			$this->redirect($this->baseurl . "cust_edit.php?id=$id_pelanggan");
+		}
+	}
 }
