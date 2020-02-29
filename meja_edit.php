@@ -34,7 +34,7 @@
 	<div class="card-header bg-dark text-white">
 		<div class="row">
 			<div class="col-12">
-				Tambah Meja
+				Edit Meja
 			</div>
 		</div>
 	</div>
