@@ -292,20 +292,18 @@ class functions {
 		return $delete;
 	}
 
-	// public function edit_pelanggan($data)
-	// {
-	// 	$id_pelanggan = $data['id_pelanggan'];
-	// 	$nama = $data['nama'];
-	// 	$jk = $data['jk'];
-	// 	$nohp = $data['nohp'];
-	// 	$alamat = $data['alamat'];
+	public function edit_user($data)
+	{
+		$id_user = $data['id_user'];
+		$nama = ucwords($data['nama']);
+		$privilege = $data['privilege'];
 
-	// 	$update = $this->exe("UPDATE tblpelanggan SET nama = '$nama', jk = '$jk', nohp = '$nohp', alamat = '$alamat' WHERE id_pelanggan = '$id_pelanggan'");
-	// 	if ( $update == 0 ) {
-	// 		$this->redirect($this->baseurl . "cust.php");
-	// 	} else {
-	// 		$this->notif("Gagal update");
-	// 		$this->redirect($this->baseurl . "cust_edit.php?id=$id_pelanggan");
-	// 	}
-	// }
+		$update = $this->exe("UPDATE tbluser SET nama = '$nama', privilege = '$privilege' WHERE id_user = '$id_user'");
+		if ( $update == 0 ) {
+			$this->redirect($this->baseurl . "user.php");
+		} else {
+			$this->notif("Gagal update");
+			$this->redirect($this->baseurl . "user_edit.php?id=$id_pelanggan");
+		}
+	}
 }
