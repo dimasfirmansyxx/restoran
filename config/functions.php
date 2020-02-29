@@ -200,4 +200,14 @@ class functions {
 			$this->redirect($this->baseurl . "meja_edit.php?id=$id_meja");
 		}
 	}
+
+	public function get_all_pelanggan()
+	{
+		$query = "SELECT * FROM tblpelanggan";
+		if ( $this->num_rows($query) > 0 ) {
+			return $this->query($query);
+		} else {
+			return 3;
+		}
+	}
 }
