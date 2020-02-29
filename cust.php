@@ -54,7 +54,7 @@
 									<tr>
 										<td><?= $i++ ?></td>
 										<td><?= $row['nama'] ?></td>
-										<td><?= $row['jk'] ?></td>
+										<td><?= ucwords($row['jk']) ?></td>
 										<td><?= $row['nohp'] ?></td>
 										<td><?= $row['alamat'] ?></td>
 										<td>
