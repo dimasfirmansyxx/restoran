@@ -210,4 +210,21 @@ class functions {
 			return 3;
 		}
 	}
+
+	public function tambah_pelanggan($data)
+	{
+		$nama = ucwords($data['nama']);
+		$jk = $data['jk'];
+		$nohp = $data['nohp'];
+		$alamat = $data['alamat'];
+
+		$insert = $this->exe("INSERT INTO tblpelanggan VALUES ('','$nama','$jk','$nohp','$alamat')");
+		if ( $insert == 0 ) {
+			$this->notif("Sukses");
+			$this->redirect($this->baseurl . "cust.php");
+		} else {
+			$this->notif("Gagal");
+			$this->redirect($this->baseurl . "cust_tambah.php");
+		}
+	}
 }
