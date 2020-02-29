@@ -250,4 +250,54 @@ class functions {
 			$this->redirect($this->baseurl . "cust_edit.php?id=$id_pelanggan");
 		}
 	}
+
+	public function get_all_user()
+	{
+		$query = "SELECT * FROM tbluser WHERE id_user <> " . $_SESSION["user_logged"]['id_user'];
+		if ( $this->num_rows($query) > 0 ) {
+			return $this->query($query);
+		} else {
+			return 3;
+		}
+	}
+
+	// public function tambah_pelanggan($data)
+	// {
+	// 	$nama = ucwords($data['nama']);
+	// 	$jk = $data['jk'];
+	// 	$nohp = $data['nohp'];
+	// 	$alamat = $data['alamat'];
+
+	// 	$insert = $this->exe("INSERT INTO tblpelanggan VALUES ('','$nama','$jk','$nohp','$alamat')");
+	// 	if ( $insert == 0 ) {
+	// 		$this->notif("Sukses");
+	// 		$this->redirect($this->baseurl . "cust.php");
+	// 	} else {
+	// 		$this->notif("Gagal");
+	// 		$this->redirect($this->baseurl . "cust_tambah.php");
+	// 	}
+	// }
+
+	// public function hapus_pelanggan($id)
+	// {
+	// 	$delete = $this->exe("DELETE FROM tblpelanggan WHERE id_pelanggan = '$id'");
+	// 	return $delete;
+	// }
+
+	// public function edit_pelanggan($data)
+	// {
+	// 	$id_pelanggan = $data['id_pelanggan'];
+	// 	$nama = $data['nama'];
+	// 	$jk = $data['jk'];
+	// 	$nohp = $data['nohp'];
+	// 	$alamat = $data['alamat'];
+
+	// 	$update = $this->exe("UPDATE tblpelanggan SET nama = '$nama', jk = '$jk', nohp = '$nohp', alamat = '$alamat' WHERE id_pelanggan = '$id_pelanggan'");
+	// 	if ( $update == 0 ) {
+	// 		$this->redirect($this->baseurl . "cust.php");
+	// 	} else {
+	// 		$this->notif("Gagal update");
+	// 		$this->redirect($this->baseurl . "cust_edit.php?id=$id_pelanggan");
+	// 	}
+	// }
 }
