@@ -70,5 +70,13 @@
 							</div>
 						</div>
 					</div>
+					<?php if ( isset($_SESSION["flash_data"]) ): ?>
+						<div class="col-12 mt-4">
+							<div class="alert alert-primary" role="alert">
+							  <?= $_SESSION["flash_data"] ?>
+							  <?php unset($_SESSION["flash_data"]) ?>
+							</div>
+						</div>
+					<?php endif ?>
 				</div>
 			<?php endif ?>

@@ -66,12 +66,14 @@ class functions {
 
 	public function redirect($link)
 	{
-		echo "<script>window.location = " . $link . "; </script>";
+		header("Location: $link");
+		// echo "<script>window.location = " . $link . "; </script>";
 	}
 
 	public function notif($msg)
 	{
-		echo "<script>alert('$msg')</script>";
+		// echo "<script>alert('$msg')</script>";
+		$_SESSION["flash_data"] = $msg;
 	}
 
 	public function set_breadcrumb($list)
