@@ -18,6 +18,7 @@
 	$get_data = $myfunc->get_all_menu();
 	$get_cust = $myfunc->get_all_pelanggan();
 	$get_cart = $myfunc->get_cart();
+	$get_meja = $myfunc->get_all_meja();
 	$total_transaksi = $myfunc->get_total_transaksi($_SESSION["id_transaksi"]);
 
 	if ( isset($_POST['cart']) ) {
@@ -34,6 +35,16 @@
 		$myfunc->del_cart($_GET['hapus']);
 	} elseif ( isset($_GET['clear']) ) {
 		$myfunc->clear_cart();
+	} elseif ( isset($_POST['pesan']) ) {
+		if ( $_POST['pelanggan'] == "0" ) {
+			$myfunc->notif("Pilih customer terlebih dahulu");
+			$myfunc->redirect($myfunc->baseurl . "order.php");
+		} elseif ( $_POST['meja'] == "0" ) {
+			$myfunc->notif("Pilih meja terlebih dahulu");
+			$myfunc->redirect($myfunc->baseurl . "order.php");
+		} else {
+			$myfunc->catat_pesanan($_POST);
+		}
 	}
 ?>
 <div class="row">
@@ -43,6 +54,12 @@
 				<option value="0">--- Pilih Pelanggan ---</option>
 				<?php foreach ($get_cust as $cust): ?>
 					<option value="<?= $cust['id_pelanggan'] ?>"><?= $cust['nama'] ?></option>
+				<?php endforeach ?>
+			</select>
+			<select class="form-control mr-3" required name="meja">
+				<option value="0">--- Pilih Meja ---</option>
+				<?php foreach ($get_meja as $meja): ?>
+					<option value="<?= $meja['id_meja'] ?>"><?= $meja['meja'] ?></option>
 				<?php endforeach ?>
 			</select>
 			<button class="btn btn-success mr-3" type="submit" name="pesan">Pesan</button>

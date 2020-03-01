@@ -394,4 +394,18 @@ class functions {
 
 		return $total;
 	}
+
+	public function catat_pesanan($data)
+	{
+		$id_transaksi = $_SESSION["id_transaksi"];
+		$id_pelanggan = $data['pelanggan'];
+		$id_meja = $data['meja'];
+
+		$update = "UPDATE tbltransaksi SET id_pelanggan = '$id_pelanggan', id_meja = '$id_meja', status = 'ongoing' WHERE id_transaksi = '$id_transaksi'";
+		$this->exe($update);
+
+		unset($_SESSION["id_transaksi"]);
+		$this->notif("Pesanan berhasil dicatat");
+		$this->redirect($this->baseurl . "index.php");
+	}
 }
