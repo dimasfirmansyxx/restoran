@@ -303,7 +303,7 @@ class functions {
 			$this->redirect($this->baseurl . "user.php");
 		} else {
 			$this->notif("Gagal update");
-			$this->redirect($this->baseurl . "user_edit.php?id=$id_pelanggan");
+			$this->redirect($this->baseurl . "user_edit.php?id=$id_user");
 		}
 	}
 }
