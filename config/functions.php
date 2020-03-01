@@ -186,6 +186,11 @@ class functions {
 		}
 	}
 
+	public function get_meja($id_meja)
+	{
+		return $this->get_data("SELECT * FROM tblmeja WHERE id_meja	= '$id_meja'");
+	}
+
 	public function tambah_meja($data)
 	{
 		$meja = $data['meja'];
@@ -228,6 +233,11 @@ class functions {
 		} else {
 			return 3;
 		}
+	}
+
+	public function get_pelanggan($id_pelanggan)
+	{
+		return $this->get_data("SELECT * FROM tblpelanggan WHERE id_pelanggan = '$id_pelanggan'");
 	}
 
 	public function tambah_pelanggan($data)
@@ -407,5 +417,10 @@ class functions {
 		unset($_SESSION["id_transaksi"]);
 		$this->notif("Pesanan berhasil dicatat");
 		$this->redirect($this->baseurl . "index.php");
+	}
+
+	public function get_all_transaksi()
+	{
+		return $this->query("SELECT * FROM tbltransaksi WHERE status = 'ongoing' ORDER BY id_transaksi DESC");
 	}
 }
