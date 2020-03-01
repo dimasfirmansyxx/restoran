@@ -1,5 +1,6 @@
 <?php 
 session_start();
+date_default_timezone_set("Asia/Jakarta");
 /*
 	0 = sukses
 	1 = kesalahan server
@@ -111,6 +112,17 @@ class functions {
 	{
 		session_destroy();	
 		header("Location: " . $this->baseurl . "login.php");
+	}
+
+	public function get_id_transaksi()
+	{
+		$id_transaksi = date("YmdHis");
+		$tanggal = date("Y-m-d");
+		$user = $_SESSION["user_logged"]['id_user'];
+		$query = "INSERT INTO tbltransaksi VALUES ('$id_transaksi','0','$user','0','$tanggal','pending')";
+		$this->exe($query);
+
+		return $id_transaksi;
 	}
 
 	public function get_all_menu()
@@ -239,7 +251,7 @@ class functions {
 	public function edit_pelanggan($data)
 	{
 		$id_pelanggan = $data['id_pelanggan'];
-		$nama = $data['nama'];
+		$nama = ucwords($data['nama']);
 		$jk = $data['jk'];
 		$nohp = $data['nohp'];
 		$alamat = $data['alamat'];
