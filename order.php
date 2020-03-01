@@ -18,6 +18,7 @@
 	$get_data = $myfunc->get_all_menu();
 	$get_cust = $myfunc->get_all_pelanggan();
 	$get_cart = $myfunc->get_cart();
+	$total_transaksi = $myfunc->get_total_transaksi($_SESSION["id_transaksi"]);
 
 	if ( isset($_POST['cart']) ) {
 		if ( $_POST['qty'] == 0 ) {
@@ -106,22 +107,27 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php if ( $get_data == 3 ): ?>
+							<?php if ( $get_cart == 3 ): ?>
 								<tr>
 									<td colspan="5" class="text-center">Tidak ada menu</td>
 								</tr>
 							<?php else: ?>
-								<?php foreach ($get_data as $row): ?>
+								<?php foreach ($get_cart as $row): ?>
+									<?php $menu = $myfunc->get_menu($row['id_menu']) ?>
 									<tr>
 										<td>
-											<a href="<?= $myfunc->baseurl ?>order.php?hapus=<?= $row['id_menu'] ?>" class="btn btn-danger btn-sm">x</a>
+											<a href="<?= $myfunc->baseurl ?>order.php?hapus=<?= $row['id_pesan'] ?>" class="btn btn-danger btn-sm">x</a>
 										</td>
-										<td><?= $row['nama_menu'] ?></td>
-										<td>Rp.<?= number_format($row['harga']) ?></td>
-										<td>a</td>
-										<td>a</td>
+										<td><?= $menu['nama_menu'] ?></td>
+										<td>Rp.<?= number_format($menu['harga']) ?></td>
+										<td><?= $row['jumlah'] ?></td>
+										<td>Rp.<?= number_format($menu['harga'] * $row['jumlah']) ?></td>
 									</tr>
 								<?php endforeach ?>
+								<tr>
+									<th colspan="4" class="text-right">Total :</th>
+									<th>Rp.<?= number_format($total_transaksi) ?></th>
+								</tr>
 							<?php endif ?>
 						</tbody>
 					</table>

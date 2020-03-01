@@ -135,6 +135,11 @@ class functions {
 		}
 	}
 
+	public function get_menu($id_menu)
+	{
+		return $this->get_data("SELECT * FROM tblmenu WHERE id_menu = '$id_menu'");
+	}
+
 	public function tambah_menu($data)
 	{
 		$nama_menu = ucwords($data['nama']);
@@ -321,7 +326,7 @@ class functions {
 
 	public function get_cart()
 	{
-		$query = "SELECT * FROM tblpesan WHERE id_transaksi <> " . $_SESSION["id_transaksi"];
+		$query = "SELECT * FROM tblpesan WHERE id_transaksi = " . $_SESSION["id_transaksi"];
 		if ( $this->num_rows($query) > 0 ) {
 			return $this->query($query);
 		} else {
@@ -348,5 +353,23 @@ class functions {
 		}
 
 		$this->redirect( $this->baseurl . "order.php" );
+	}
+
+	public function get_pesanan($id_transaksi)
+	{
+		return $this->query("SELECT * FROM tblpesan WHERE id_transaksi = '$id_transaksi'");
+	}
+
+	public function get_total_transaksi($id_transaksi)
+	{
+		$get_pesanan = $this->get_pesanan($id_transaksi);
+		$total = 0;
+		foreach ($get_pesanan as $pesanan) {
+			$menu = $this->get_menu($pesanan['id_menu']);
+			$subtotal = $menu['harga'] * $pesanan['jumlah'];
+			$total += $subtotal;
+		}
+
+		return $total;
 	}
 }
