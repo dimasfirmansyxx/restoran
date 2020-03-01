@@ -30,6 +30,8 @@
 		} else {
 			$myfunc->add_cart($_POST);
 		}
+	} elseif ( isset($_GET['hapus']) ) {
+		$myfunc->del_cart($_GET['hapus']);
 	}
 ?>
 <div class="row">
