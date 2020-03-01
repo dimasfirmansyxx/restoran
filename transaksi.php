@@ -10,12 +10,8 @@
 	if ( !($privilege == "administrator" || $privilege == "kasir") ) {
 		$myfunc->redirect($myfunc->baseurl . "index.php");
 	}
-
-	if ( isset($_POST['search']) ) {
-		# code...
-	} else {
-		$get_data = $myfunc->get_all_transaksi();
-	}
+	
+	$get_data = $myfunc->get_all_transaksi();
 
 	if ( isset($_POST['bayar']) ) {
 		$myfunc->transaksi_selesai($_POST);
