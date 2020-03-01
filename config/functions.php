@@ -421,6 +421,28 @@ class functions {
 
 	public function get_all_transaksi()
 	{
-		return $this->query("SELECT * FROM tbltransaksi WHERE status = 'ongoing' ORDER BY id_transaksi DESC");
+		return $this->query("SELECT * FROM tbltransaksi WHERE status = 'ongoing'");
+	}
+
+	public function transaksi_selesai($data)
+	{
+		$id_transaksi = $data['bayar'];
+		$bayar = $data['jumlah'];
+		$total_transaksi = $this->get_total_transaksi($id_transaksi);
+
+		if ( $bayar < $total_transaksi ) {
+			$this->notif("Jumlah pembayaran kurang");
+		} else {
+			$kembalian = $bayar - $total_transaksi;
+			$update = "UPDATE tbltransaksi SET status = 'success' WHERE id_transaksi = '$id_transaksi'";
+			$this->exe($update);
+
+			if ( $kembalian == 0 ) {
+				$this->notif("Transaksi selesai");
+			} else {
+				$this->notif("Transaksi selesai. Kembalian Rp." . number_format($kembalian));
+			}
+		}
+		$this->redirect($this->baseurl . "transaksi.php");
 	}
 }

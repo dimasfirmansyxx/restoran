@@ -16,6 +16,10 @@
 	} else {
 		$get_data = $myfunc->get_all_transaksi();
 	}
+
+	if ( isset($_POST['bayar']) ) {
+		$myfunc->transaksi_selesai($_POST);
+	}
 ?>
 <?php foreach ($get_data as $row): ?>
 	<?php 
@@ -24,7 +28,7 @@
 		$total_transaksi = $myfunc->get_total_transaksi($row["id_transaksi"]);
 		$get_meja = $myfunc->get_meja($row['id_meja']);
 	?>
-	<div class="row">
+	<div class="row mb-5">
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
@@ -83,8 +87,15 @@
 								</table>
 							</div>
 						</div>
+						
+						<div class="col-12">
+							<form class="form-inline" action="" method="post">
+								<input type="number" name="jumlah" class="form-control" placeholder="Bayar">
+								<button type="submit" name="bayar" class="btn btn-success ml-2" value="<?= $row['id_transaksi'] ?>">Bayar</button>
+							</form>
+						</div>
+
 					</div>
-				
 				</div>
 			</div>
 		</div>
