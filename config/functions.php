@@ -345,8 +345,14 @@ class functions {
 			$get = $this->get_data($query);
 			$id_pesan = $get['id_pesan'];
 			$qty = $qty + $get['jumlah'];
-			$update = "UPDATE tblpesan SET jumlah = '$qty' WHERE id_pesan = '$id_pesan'";
-			$this->exe($update);
+
+			if ( $qty < 1 ) {
+				$delete = "DELETE FROM tblpesan WHERE id_pesan = '$id_pesan'";
+				$this->exe($delete);
+			} else {
+				$update = "UPDATE tblpesan SET jumlah = '$qty' WHERE id_pesan = '$id_pesan'";
+				$this->exe($update);
+			}
 		} else {
 			$insert = "INSERT INTO tblpesan VALUES ('','$id_transaksi','$id_menu','$qty')";
 			$this->exe($insert);
