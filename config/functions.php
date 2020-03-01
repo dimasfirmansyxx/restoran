@@ -367,6 +367,16 @@ class functions {
 		$this->redirect( $this->baseurl . "order.php" );
 	}
 
+	public function clear_cart()
+	{
+		$id_transaksi = $_SESSION["id_transaksi"];
+		$this->exe("DELETE FROM tblpesan WHERE id_transaksi = '$id_transaksi'");
+		$this->exe("DELETE FROM tbltransaksi WHERE id_transaksi = '$id_transaksi'");
+	
+		unset($_SESSION["id_transaksi"]);
+		$this->redirect( $this->baseurl . "index.php" );
+	}
+
 	public function get_pesanan($id_transaksi)
 	{
 		return $this->query("SELECT * FROM tblpesan WHERE id_transaksi = '$id_transaksi'");

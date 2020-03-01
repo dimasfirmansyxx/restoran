@@ -32,6 +32,8 @@
 		}
 	} elseif ( isset($_GET['hapus']) ) {
 		$myfunc->del_cart($_GET['hapus']);
+	} elseif ( isset($_GET['clear']) ) {
+		$myfunc->clear_cart();
 	}
 ?>
 <div class="row">
@@ -44,7 +46,7 @@
 				<?php endforeach ?>
 			</select>
 			<button class="btn btn-success mr-3" type="submit" name="pesan">Pesan</button>
-			<a href="#" class="btn btn-danger mr-3">Batal</a>
+			<a href="<?= $myfunc->baseurl ?>order.php?clear=" class="btn btn-danger mr-3">Batal</a>
 		</form>
 	</div>
 	<div class="col-md-5">
