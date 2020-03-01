@@ -178,7 +178,7 @@ class functions {
 	
 	public function get_all_meja()
 	{
-		$query = "SELECT * FROM tblmeja";
+		$query = "SELECT * FROM tblmeja WHERE id_meja <> 0";
 		if ( $this->num_rows($query) > 0 ) {
 			return $this->query($query);
 		} else {
@@ -222,7 +222,7 @@ class functions {
 
 	public function get_all_pelanggan()
 	{
-		$query = "SELECT * FROM tblpelanggan";
+		$query = "SELECT * FROM tblpelanggan WHERE id_pelanggan <> 0";
 		if ( $this->num_rows($query) > 0 ) {
 			return $this->query($query);
 		} else {
