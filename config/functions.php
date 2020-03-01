@@ -318,4 +318,35 @@ class functions {
 			$this->redirect($this->baseurl . "user_edit.php?id=$id_user");
 		}
 	}
+
+	public function get_cart()
+	{
+		$query = "SELECT * FROM tblpesan WHERE id_transaksi <> " . $_SESSION["id_transaksi"];
+		if ( $this->num_rows($query) > 0 ) {
+			return $this->query($query);
+		} else {
+			return 3;
+		}
+	}
+
+	public function add_cart($data)
+	{
+		$id_transaksi = $_SESSION["id_transaksi"];
+		$id_menu = $data['cart'];
+		$qty = $data['qty'];
+
+		$query = "SELECT * FROM tblpesan WHERE id_transaksi = '$id_transaksi' AND id_menu = '$id_menu'";
+		if ( $this->num_rows($query) > 0 ) {
+			$get = $this->get_data($query);
+			$id_pesan = $get['id_pesan'];
+			$qty = $qty + $get['jumlah'];
+			$update = "UPDATE tblpesan SET jumlah = '$qty' WHERE id_pesan = '$id_pesan'";
+			$this->exe($update);
+		} else {
+			$insert = "INSERT INTO tblpesan VALUES ('','$id_transaksi','$id_menu','$qty')";
+			$this->exe($insert);
+		}
+
+		$this->redirect( $this->baseurl . "order.php" );
+	}
 }
